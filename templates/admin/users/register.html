@@ -35,42 +35,41 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">회원가입</h1>
                         </div>
-                        <form class="user">
+                        <form class="user" method="POST">
+                            {{ form.csrf_token }}
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="Name"
+                                    <input type="text" class="form-control form-control-user" id="Name" name="name"
                                        placeholder="이름">
                                 </div>
                                 <div class="col-sm-6">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="Email"
+                                <input type="email" class="form-control form-control-user" id="Email" name="email"
                                        placeholder="이메일">
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user"
-                                           id="Password" placeholder="비밀번호">
+                                           id="Password" name="password" placeholder="비밀번호">
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user"
-                                           id="RepeatPassword" placeholder="비밀번호 확인">
+                                           id="RepeatPassword" name="repeatpassword" placeholder="비밀번호 확인">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="text" class="form-control form-control-user"
-                                           id="Phone" placeholder="전화번호">
+                                           id="Phone" name="phone" placeholder="전화번호">
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control form-control-user"
-                                           id="Mobile" placeholder="휴대전화">
+                                           id="Mobile" name="mobile" placeholder="휴대전화">
                                 </div>
                             </div>
-                            <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                회원가
-                            </a>
+                            <input type="submit" class="btn btn-primary btn-user btn-block" value="회원가입">
                         </form>
                         <hr>
                         <div class="text-center">

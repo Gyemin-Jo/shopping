@@ -4,7 +4,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine(
-    "mysql://user:pw@localhost/dbname?charset=utf8",
+    "mysql://root:jil001_!@localhost/shopping?charset=utf8",
     echo=False,
     convert_unicode=True,
     pool_size=30, max_overflow=100

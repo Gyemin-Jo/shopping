@@ -1,6 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, HiddenField, ValidationError
 
+from databases import db_session
+from users.models import User
+
 
 class LoginForm(FlaskForm):
     user = None
@@ -25,3 +28,13 @@ class LoginForm(FlaskForm):
         if form.user:
             if not form.user.check_password(password):
                 raise ValidationError(u'Incorrect password.')
+
+
+class RegisterForm(FlaskForm):
+    user = None
+    name = StringField()
+    email = StringField()
+    password = PasswordField()
+    repeatpassword = PasswordField()
+    phone = StringField()
+    tel = StringField()
