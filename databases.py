@@ -1,29 +1,15 @@
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from app import create_app, db
 
-engine = create_engine(
-    "mysql://root:jil001_!@localhost/shopping?charset=utf8",
-    echo=False,
-    convert_unicode=True,
-    pool_size=30, max_overflow=100
-)
+from users import models
 
-db_session = scoped_session(
-    sessionmaker(
-        autocommit=True,
-        autoflush=True,
-        bind=engine,
-    )
-)
-Base = declarative_base()
-Base.query = db_session.query_property()
+app = create_app('settings')
 
+migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
 
-def data_insert(data):
-    db_session.add(data)
-    try:
-        db_session.commit()
-    except:
-        db_session.rollback()
+if __name__ == '__main__':
+    manager.run()

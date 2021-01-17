@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, HiddenField, ValidationError
 
-from databases import db_session
 from users.models import User
 
 
@@ -19,7 +18,7 @@ class LoginForm(FlaskForm):
     def validate_email(form, field):
         email = field.data
         try:
-            form.user = db_session.query(User).filter(User.email == email).one()
+            form.user = User.query.get(email=email)
         except:
             raise ValidationError(u'Login not found.')
 
