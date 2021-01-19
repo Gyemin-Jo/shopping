@@ -1,8 +1,8 @@
 from flask import render_template, request
 
 from manage import app
+from app import app, db, session
 from users.forms import LoginForm, RegisterForm
-
 
 # 로그인
 @app.route('/login', methods=['GET', 'POST'])
@@ -23,15 +23,18 @@ def register():
 @app.route('/signUp', methods=['GET', 'POST'])
 def signUp():
 
-    id = request.form['id']
-    email = request.form['email']
-    password = reques.form['password']
     name = request.form['name']
-    tel = request.form['tel']
+    email = request.form['email']
+    password = request.form['password']
+    repeatpassword = request.form['repeatpassword']
+    phone = request.form['phone']
     mobile = request.form['mobile']
 
-    users = [id,email,password,name,tel,mobile]
+    users = {'name': name,'email':email,'password':password,'repeatpassword':repeatpassword,'phone':phone,'mobile':mobile}
 
     print(users)
 
-    return render_template('admin/users/register.html', form=form)
+    session.add(users)
+    session.commit()
+
+    return render_template('admin/users/login.html')

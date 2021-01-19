@@ -3,7 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db
 
-
 class User(db.Model):
     __tablename__ = 'users'
     __table_args__ = {'mysql_collate': 'utf8_general_ci'}
