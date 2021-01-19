@@ -19,3 +19,19 @@ def register():
     context = request.get_json()
     form = RegisterForm()
     return render_template('admin/users/register.html', form=form)
+
+@app.route('/signUp', methods=['GET', 'POST'])
+def signUp():
+
+    id = request.form['id']
+    email = request.form['email']
+    password = reques.form['password']
+    name = request.form['name']
+    tel = request.form['tel']
+    mobile = request.form['mobile']
+
+    users = [id,email,password,name,tel,mobile]
+
+    print(users)
+
+    return render_template('admin/users/register.html', form=form)
