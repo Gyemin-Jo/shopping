@@ -6,7 +6,7 @@ from app import db
 class User(db.Model):
     __tablename__ = 'users'
     __table_args__ = {'mysql_collate': 'utf8_general_ci'}
-    name = db.Column(db.Integer, primary_key=True, autoincrement=True, nullable=False)
+    name = db.Column(db.String(100), primary_key=True, autoincrement=True, nullable=False)
     email = db.Column(db.String(100), key='email', unique=True)
     password = db.Column(db.String(256), key='password')
     repeatpassword = db.Column(db.String(256), key='repeatpassword')

@@ -16,8 +16,8 @@ app.jinja_env.filters['date_format'] = date_format
 app.config.from_object('settings')
 db = SQLAlchemy(app)
 engine = create_engine('mysql://roote@localhost/admin?charset=utf8', echo=True)
-session = sessionmaker(bind=engine)
-
+Session = sessionmaker(bind=engine)
+Session.configure(bind=engine)
 
 def create_app(env=None):
     csrf = CSRFProtect(app)
