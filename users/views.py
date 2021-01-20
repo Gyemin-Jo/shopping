@@ -32,12 +32,9 @@ def signUp():
     phone = request.form['phone']
     mobile = request.form['mobile']
 
-    users = (name,email,password,repeatpassword,phone,mobile)
+    user = User(name = name, email=email, password=password, repeatpassword=repeatpassword, phone=phone, mobile =mobile)
 
-    print(users)
-
-    test = User(users)
-    session.add(test)
-    session.commit()
+    db.session.add(user)
+    db.session.commit()
 
     return render_template('admin/users/login.html')
