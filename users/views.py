@@ -1,5 +1,4 @@
-from flask import render_template, request
-
+from flask import render_template, request, flash
 from manage import app
 from app import app, db, Session
 from users.forms import LoginForm, RegisterForm
@@ -37,4 +36,5 @@ def signUp():
     db.session.add(user)
     db.session.commit()
 
+    flash("회원가입 완료")
     return render_template('admin/users/login.html')
