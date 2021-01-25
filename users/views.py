@@ -1,9 +1,9 @@
-from flask import render_template, request, flash
+from flask import render_template, request, flash, Flask
 from manage import app
 from app import app, db, Session
 from users.forms import LoginForm, RegisterForm
 from users.models import User
-
+from flask_bcrypt import Bcrypt
 # 로그인
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -22,16 +22,15 @@ def register():
 
 @app.route('/signUp', methods=['GET', 'POST'])
 def signUp():
-    session = Session()
 
     name = request.form['name']
     email = request.form['email']
     password = request.form['password']
     repeatpassword = request.form['repeatpassword']
-    phone = request.form['phone']
+    tel = request.form['tel']
     mobile = request.form['mobile']
 
-    user = User(name = name, email=email, password=password, repeatpassword=repeatpassword, phone=phone, mobile =mobile)
+    user = User(name = name, email=email, password=password, tel=tel, mobile =mobile)
 
     db.session.add(user)
     db.session.commit()
