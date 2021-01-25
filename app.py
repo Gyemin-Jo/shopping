@@ -20,6 +20,7 @@ Session = sessionmaker(bind=engine)
 Session.configure(bind=engine)
 
 def create_app(env=None):
+    app.config['SECRET_KEY'] = 'wcsfeufhwiquehfdx'
     csrf = CSRFProtect(app)
     csrf.init_app(app)
     CORS(app)

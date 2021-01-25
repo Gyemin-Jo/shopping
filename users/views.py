@@ -8,7 +8,6 @@ from flask_bcrypt import Bcrypt
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-
     context = {}
 
     return render_template('admin/users/login.html', context=context, form=form)
@@ -37,3 +36,13 @@ def signUp():
 
     flash("회원가입 완료")
     return render_template('admin/users/login.html')
+
+@app.route('/access', methods=['GET', 'POST'])
+def access():
+    form = LoginForm()
+
+    email = request.form['email']
+    password = request.form['password']
+
+    print(email, password)
+    return render_template('admin/users/product.html')
